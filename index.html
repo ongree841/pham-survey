@@ -1,246 +1,734 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>แบบสอบถามงานวิจัยผำ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --pond: #133330;
-    --pond-deep: #0A1E1C;
-    --paper: #FFFFFF;
-    --paper-dim: #C9D6D1;      /* brighter, more readable than before */
-    --duck: #D7EA85;           /* lifted for contrast */
-    --gold: #E5C384;
-    --clay: #D6A17F;
-    --teal-accent: #9BC4BB;
-    --line: rgba(255,255,255,0.16);
-    --card-bg: rgba(255,255,255,0.05);
-    --card-bg-hover: rgba(255,255,255,0.09);
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{
-    background: var(--pond);
-    background-image:
-      radial-gradient(circle at 12% 8%, var(--duck) 0 3px, transparent 3px),
-      radial-gradient(circle at 82% 5%, var(--duck) 0 2px, transparent 2px),
-      radial-gradient(circle at 92% 22%, var(--gold) 0 2.5px, transparent 2.5px),
-      radial-gradient(circle at 6% 30%, var(--gold) 0 2px, transparent 2px);
-    background-repeat: no-repeat;
-    color: var(--paper);
-    font-family: 'Inter', sans-serif;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    padding: 56px 20px 40px;
-  }
-  .page{ width:100%; max-width: 480px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  .profile{
-    text-align:center;
-    margin-bottom: 36px;
-  }
-  .eyebrow-motif{
-    display:flex;
-    justify-content:center;
-    gap:6px;
-    margin-bottom:18px;
-  }
-  .dot{ width:7px; height:7px; border-radius:50%; }
-  .dot:nth-child(1){ background: var(--duck); }
-  .dot:nth-child(2){ background: var(--gold); transform: translateY(3px); }
-  .dot:nth-child(3){ background: var(--duck); }
-  .dot:nth-child(4){ background: var(--clay); transform: translateY(2px); }
-  .dot:nth-child(5){ background: var(--duck); }
+  <title>แบบสอบถามงานวิจัยผำ</title>
 
-  .name{
-    font-family:'Fraunces', serif;
-    font-weight:700;
-    font-size: 28px;
-    letter-spacing: -0.01em;
-    line-height:1.35;
-    margin-bottom: 12px;
-    color: var(--paper);
-  }
-  .tagline{
-    color: var(--paper-dim);
-    font-size: 14.5px;
-    line-height:1.7;
-    max-width: 350px;
-    margin: 0 auto;
-  }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  .instruction{
-    text-align:center;
-    font-size: 12.5px;
-    font-weight:600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--teal-accent);
-    margin: 30px 0 14px;
-  }
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
 
-  .index{
-    display:flex;
-    flex-direction:column;
-    gap: 10px;
-  }
-  .card{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    padding: 18px 18px;
-    background: var(--card-bg);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    text-decoration:none;
-    color: var(--paper);
-    position:relative;
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-  }
-  .card:hover, .card:focus-visible{
-    background: var(--card-bg-hover);
-    border-color: rgba(255,255,255,0.32);
-    transform: translateX(3px);
-  }
-  .card:hover .arrow, .card:focus-visible .arrow{ transform: translateX(4px); opacity:1; }
+  <style>
+    :root {
+      --bg: #102f2c;
+      --bg-dark: #09211f;
 
-  .num{
-    flex-shrink:0;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size: 15px;
-    color: var(--pond-deep);
-  }
-  .card.p1 .num{ background: var(--duck); }
-  .card.p2 .num{ background: var(--gold); }
-  .card.p3 .num{ background: var(--clay); }
-  .card.p4 .num{ background: var(--teal-accent); }
+      --text: #ffffff;
+      --text-soft: #d6e3df;
+      --text-muted: #aebfba;
 
-  .card-body{ flex:1; min-width:0; }
-  .card-title{
-    font-family:'Fraunces', serif;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: var(--paper);
-  }
-  .card-sub{
-    color: var(--paper-dim);
-    font-size: 13px;
-    line-height:1.45;
-  }
-  .card-sub.en{
-    font-style: normal;
-  }
-  .arrow{
-    color: var(--paper);
-    opacity: 0.6;
-    font-size: 20px;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-  }
+      --green: #d8ec88;
+      --gold: #ebc983;
+      --orange: #dda47f;
+      --teal: #9bcfc4;
 
-  footer{
-    text-align:center;
-    margin-top: 40px;
-    color: var(--paper-dim);
-    font-size: 12px;
-    letter-spacing: 0.02em;
-  }
+      --card: rgba(255, 255, 255, 0.065);
+      --card-hover: rgba(255, 255, 255, 0.11);
+      --border: rgba(255, 255, 255, 0.14);
 
-  @media (prefers-reduced-motion: reduce){
-    .card{ transition:none; }
-  }
-</style>
+      --shadow: 0 12px 30px rgba(0,0,0,0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 5%, rgba(216,236,136,0.14), transparent 25%),
+        radial-gradient(circle at 95% 15%, rgba(235,201,131,0.10), transparent 26%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-dark) 100%);
+
+      color: var(--text);
+      font-family: "IBM Plex Sans Thai", sans-serif;
+
+      display: flex;
+      justify-content: center;
+
+      padding: 40px 18px 50px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 620px;
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .logo-mark {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 18px;
+
+      border-radius: 18px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: var(--green);
+      color: var(--bg-dark);
+
+      font-size: 28px;
+
+      box-shadow:
+        0 10px 30px rgba(216,236,136,0.15),
+        inset 0 0 0 1px rgba(255,255,255,0.35);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      color: var(--green);
+
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+
+      margin-bottom: 12px;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      display: block;
+
+      width: 18px;
+      height: 1px;
+
+      background: rgba(216,236,136,0.55);
+    }
+
+    h1 {
+      font-family: "Fraunces", "IBM Plex Sans Thai", serif;
+      font-size: clamp(28px, 7vw, 38px);
+      line-height: 1.25;
+
+      margin-bottom: 12px;
+    }
+
+    .intro {
+      max-width: 500px;
+      margin: 0 auto;
+
+      font-size: 15px;
+      line-height: 1.75;
+
+      color: var(--text-soft);
+    }
+
+    /* ---------- INFO BOX ---------- */
+
+    .info-box {
+      display: flex;
+      gap: 12px;
+
+      padding: 14px 16px;
+
+      background: rgba(216, 236, 136, 0.08);
+      border: 1px solid rgba(216, 236, 136, 0.20);
+      border-radius: 14px;
+
+      margin-bottom: 28px;
+    }
+
+    .info-icon {
+      flex-shrink: 0;
+
+      width: 32px;
+      height: 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: var(--green);
+      color: var(--bg-dark);
+
+      font-weight: 700;
+    }
+
+    .info-text {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--text-soft);
+    }
+
+    .info-text strong {
+      color: white;
+    }
+
+    /* ---------- SECTION ---------- */
+
+    .section-head {
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+
+      margin-bottom: 4px;
+    }
+
+    .section-description {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* ---------- CARDS ---------- */
+
+    .index {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card {
+      display: grid;
+      grid-template-columns: 50px 1fr auto;
+      align-items: center;
+      gap: 15px;
+
+      padding: 17px;
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+      border-radius: 16px;
+
+      text-decoration: none;
+      color: var(--text);
+
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+
+      transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+    }
+
+    .card:hover,
+    .card:focus-visible {
+      background: var(--card-hover);
+      border-color: rgba(255,255,255,0.30);
+
+      transform: translateY(-2px);
+
+      box-shadow: var(--shadow);
+    }
+
+    .number {
+      width: 48px;
+      height: 48px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 14px;
+
+      color: var(--bg-dark);
+
+      font-family: "Fraunces", serif;
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .student .number,
+    .seller .number {
+      background: var(--green);
+    }
+
+    .tourist .number,
+    .restaurant .number {
+      background: var(--gold);
+    }
+
+    .consumer .number,
+    .producer .number {
+      background: var(--orange);
+    }
+
+    .processor .number {
+      background: var(--teal);
+    }
+
+    .card-content {
+      min-width: 0;
+    }
+
+    .card-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 7px;
+
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 16.5px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .badge {
+      display: inline-flex;
+
+      padding: 3px 7px;
+
+      border-radius: 20px;
+
+      background: rgba(255,255,255,0.10);
+
+      color: var(--text-soft);
+
+      font-size: 10.5px;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      color: var(--text-muted);
+
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .arrow {
+      width: 34px;
+      height: 34px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,0.07);
+
+      color: white;
+      font-size: 22px;
+
+      transition:
+        transform 0.18s ease,
+        background 0.18s ease;
+    }
+
+    .card:hover .arrow {
+      transform: translateX(3px);
+      background: rgba(255,255,255,0.13);
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      margin-top: 36px;
+
+      text-align: center;
+
+      color: var(--text-muted);
+
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    footer strong {
+      color: var(--text-soft);
+    }
+
+    /* ---------- MOBILE ---------- */
+
+    @media (max-width: 480px) {
+      body {
+        padding: 30px 14px 40px;
+      }
+
+      .hero {
+        margin-bottom: 28px;
+      }
+
+      .card {
+        grid-template-columns: 44px 1fr auto;
+        gap: 12px;
+
+        padding: 14px;
+      }
+
+      .number {
+        width: 44px;
+        height: 44px;
+
+        border-radius: 12px;
+      }
+
+      .card-title {
+        font-size: 15.5px;
+      }
+
+      .card-subtitle {
+        font-size: 12.5px;
+      }
+
+      .arrow {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card,
+      .arrow {
+        transition: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <div class="page">
 
-    <div class="profile">
-      <div class="eyebrow-motif">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  <main class="page">
+
+    <header class="hero">
+
+      <div class="logo-mark">
+        🌱
       </div>
-      <div class="name">แบบสอบถามงานวิจัยผำ</div>
-      <p class="tagline">เลือกกลุ่มที่ตรงกับท่านมากที่สุด เพื่อทำแบบสอบถามที่เหมาะสม ใช้เวลาไม่นาน ขอบคุณที่ร่วมเป็นส่วนหนึ่งของงานวิจัยครับ</p>
+
+      <div class="eyebrow">
+        WOLFFIA RESEARCH
+      </div>
+
+      <h1>
+        แบบสอบถามงานวิจัยผำ
+      </h1>
+
+      <p class="intro">
+        แบบสอบถามนี้จัดทำขึ้นเพื่อศึกษาข้อมูลเกี่ยวกับ
+        การรับรู้ การบริโภค การผลิต การจำหน่าย
+        และแนวโน้มตลาดของ “ผำ”
+        กรุณาเลือกกลุ่มที่ตรงกับท่านมากที่สุด
+      </p>
+
+    </header>
+
+
+    <div class="info-box">
+
+      <div class="info-icon">
+        i
+      </div>
+
+      <div class="info-text">
+        <strong>เลือกเพียง 1 กลุ่ม</strong>
+        ที่ตรงกับสถานะของท่านมากที่สุด
+        จากนั้นระบบจะนำท่านไปยังแบบสอบถามที่เหมาะสมโดยอัตโนมัติ
+      </div>
+
     </div>
 
-    <p class="instruction">กรุณาเลือกกลุ่มของท่าน</p>
 
-    <div class="index">
-      <a class="card p1" href="https://forms.gle/1ha9i4h9YVvQQmu2A">
-        <div class="num">1</div>
-        <div class="card-body">
-          <div class="card-title">นักศึกษามหาวิทยาลัยแม่โจ้</div>
-          <div class="card-sub">สำหรับนักศึกษา มหาวิทยาลัยแม่โจ้</div>
+    <section>
+
+      <div class="section-head">
+        <div class="section-title">
+          ท่านอยู่ในกลุ่มใด?
         </div>
-        <div class="arrow">›</div>
-      </a>
 
-      <a class="card p2" href="https://docs.google.com/forms/d/e/1FAIpQLSf5JcEfUFwmogwCSCxrKGGnDPOAK4CB2a4MTTH8qFc90lmMew/viewform">
-        <div class="num">2</div>
-        <div class="card-body">
-          <div class="card-title">Foreign Tourists</div>
-          <div class="card-sub en">For international visitors to Chiang Mai</div>
+        <div class="section-description">
+          กดเลือกเพื่อเข้าสู่แบบสอบถาม
         </div>
-        <div class="arrow">›</div>
-      </a>
+      </div>
 
-      <a class="card p2" href="https://docs.google.com/forms/d/e/1FAIpQLSd8Hq1Qsx5WAlTzhR1wHM-6EfNGreXDm4kt_v3qwdP9EwPVkQ/viewform">
-        <div class="num">3</div>
-        <div class="card-body">
-          <div class="card-title">ร้านอาหาร / โรงแรม</div>
-          <div class="card-sub">สำหรับผู้ประกอบการร้านอาหารและโรงแรม</div>
-        </div>
-        <div class="arrow">›</div>
-      </a>
 
-      <a class="card p3" href="https://docs.google.com/forms/d/e/1FAIpQLSfKz-Vjxa_jMpXTF9-hwvswKJDtVY2dyKMiyOvbGi8hnq45wQ/viewform">
-        <div class="num">4</div>
-        <div class="card-body">
-          <div class="card-title">ผู้บริโภคทั่วไป (ในจังหวัดเชียงใหม่)</div>
-          <div class="card-sub">สำหรับผู้อยู่อาศัยในจังหวัดเชียงใหม่</div>
-        </div>
-        <div class="arrow">›</div>
-      </a>
+      <div class="index">
 
-      <a class="card p1" href="https://forms.gle/LnBzEUSd5xVFSfaN7">
-        <div class="num">5</div>
-        <div class="card-body">
-          <div class="card-title">ผู้จำหน่ายผำ</div>
-          <div class="card-sub">สำหรับพ่อค้าแม่ค้าที่จำหน่ายผำ</div>
-        </div>
-        <div class="arrow">›</div>
-      </a>
+        <!-- 1 -->
+        <a
+          class="card student"
+          href="https://forms.gle/1ha9i4h9YVvQQmu2A"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
 
-      <a class="card p4" href="https://docs.google.com/forms/d/e/1FAIpQLSdil7ki1WruEsC4bGMiP2wWcrAaff445y6hA3ZRk03a8txypw/viewform">
-        <div class="num">6</div>
-        <div class="card-body">
-          <div class="card-title">ผู้แปรรูปผลิตภัณฑ์</div>
-          <div class="card-sub">สำหรับผู้แปรรูปผลิตภัณฑ์จากผำ</div>
-        </div>
-        <div class="arrow">›</div>
-      </a>
+          <div class="number">1</div>
 
-      <a class="card p3" href="https://forms.gle/PFNTPbmk9x25xpGt5">
-        <div class="num">7</div>
-        <div class="card-body">
-          <div class="card-title">ผู้ผลิต</div>
-          <div class="card-sub">สำหรับผู้ผลิต / เกษตรกรผู้ปลูกผำ</div>
-        </div>
-        <div class="arrow">›</div>
-      </a>
-    </div>
+          <div class="card-content">
 
-    <footer>โครงการวิจัยผำ · 2569</footer>
-  </div>
+            <div class="card-top">
+              <div class="card-title">
+                นักศึกษามหาวิทยาลัยแม่โจ้
+              </div>
+
+              <span class="badge">
+                นักศึกษา
+              </span>
+            </div>
+
+            <div class="card-subtitle">
+              สำหรับนักศึกษาที่กำลังศึกษาอยู่ในมหาวิทยาลัยแม่โจ้
+            </div>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+
+        <!-- 2 -->
+        <a
+          class="card tourist"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSf5JcEfUFwmogwCSCxrKGGnDPOAK4CB2a4MTTH8qFc90lmMew/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="number">2</div>
+
+          <div class="card-content">
+
+            <div class="card-top">
+              <div class="card-title">
+                Foreign Tourists
+              </div>
+
+              <span class="badge">
+                English
+              </span>
+            </div>
+
+            <div class="card-subtitle">
+              For international visitors and tourists in Chiang Mai
+            </div>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+
+        <!-- 3 -->
+        <a
+          class="card restaurant"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd8Hq1Qsx5WAlTzhR1wHM-6EfNGreXDm4kt_v3qwdP9EwPVkQ/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="number">3</div>
+
+          <div class="card-content">
+
+            <div class="card-top">
+              <div class="card-title">
+                ร้านอาหาร / โรงแรม
+              </div>
+
+              <span class="badge">
+                B2B
+              </span>
+            </div>
+
+            <div class="card-subtitle">
+              สำหรับเจ้าของกิจการ ผู้จัดการ เชฟ
+              หรือผู้เกี่ยวข้องกับธุรกิจร้านอาหารและโรงแรม
+            </div>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+
+        <!-- 4 -->
+        <a
+          class="card consumer"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfKz-Vjxa_jMpXTF9-hwvswKJDtVY2dyKMiyOvbGi8hnq45wQ/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="number">4</div>
+
+          <div class="card-content">
+
+            <div class="card-top">
+              <div class="card-title">
+                ผู้บริโภคทั่วไป
+              </div>
+
+              <span class="badge">
+                เชียงใหม่
+              </span>
+            </div>
+
+            <div class="card-subtitle">
+              สำหรับประชาชนทั่วไปที่อาศัยอยู่ในจังหวัดเชียงใหม่
+            </div>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+
+        <!-- 5 -->
+        <a
+          class="card seller"
+          href="https://forms.gle/LnBzEUSd5xVFSfaN7"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="number">5</div>
+
+          <div class="card-content">
+
+            <div class="card-top">
+              <div class="card-title">
+                ผู้จำหน่ายผำ
+              </div>
+
+              <span class="badge">
+                การตลาด
+              </span>
+            </div>
+
+            <div class="card-subtitle">
+              สำหรับพ่อค้า แม่ค้า ร้านค้า
+              หรือตัวแทนจำหน่ายผำ
+            </div>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+
+        <!-- 6 -->
+        <a
+          class="card processor"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdil7ki1WruEsC4bGMiP2wWcrAaff445y6hA3ZRk03a8txypw/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="number">6</div>
+
+          <div class="card-content">
+
+            <div class="card-top">
+              <div class="card-title">
+                ผู้แปรรูปผลิตภัณฑ์
+              </div>
+
+              <span class="badge">
+                Processing
+              </span>
+            </div>
+
+            <div class="card-subtitle">
+              สำหรับผู้ประกอบการที่นำผำไปแปรรูป
+              หรือพัฒนาเป็นผลิตภัณฑ์อาหาร
+            </div>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+
+        <!-- 7 -->
+        <a
+          class="card producer"
+          href="https://forms.gle/PFNTPbmk9x25xpGt5"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="number">7</div>
+
+          <div class="card-content">
+
+            <div class="card-top">
+              <div class="card-title">
+                ผู้ผลิต / เกษตรกรผู้เพาะเลี้ยงผำ
+              </div>
+
+              <span class="badge">
+                Production
+              </span>
+            </div>
+
+            <div class="card-subtitle">
+              สำหรับฟาร์ม เกษตรกร
+              หรือผู้ประกอบการที่เพาะเลี้ยงและผลิตผำ
+            </div>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <footer>
+
+      <strong>
+        โครงการวิจัยผำ · 2569
+      </strong>
+
+      <br>
+
+      ข้อมูลของท่านจะใช้เพื่อวัตถุประสงค์ทางการวิจัย
+
+    </footer>
+
+  </main>
+
 </body>
 </html>
