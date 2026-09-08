@@ -205,16 +205,16 @@
 
     .card {
       display: grid;
-      grid-template-columns: 50px 1fr auto;
+      grid-template-columns: 44px 1fr 30px;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
 
-      padding: 17px;
+      padding: 15px 16px;
 
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.055);
 
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 14px;
 
       text-decoration: none;
       color: var(--text);
@@ -261,7 +261,8 @@
     }
 
     .tourist .number,
-    .restaurant .number {
+    .restaurant .number,
+    .hotel .number {
       background: var(--gold);
     }
 
@@ -291,21 +292,6 @@
       font-size: 16.5px;
       font-weight: 700;
       line-height: 1.45;
-    }
-
-    .badge {
-      display: inline-flex;
-
-      padding: 3px 7px;
-
-      border-radius: 20px;
-
-      background: rgba(255,255,255,0.10);
-
-      color: var(--text-soft);
-
-      font-size: 10.5px;
-      font-weight: 600;
     }
 
     .card-subtitle {
@@ -369,10 +355,10 @@
       }
 
       .card {
-        grid-template-columns: 44px 1fr auto;
+        grid-template-columns: 40px 1fr 28px;
         gap: 12px;
 
-        padding: 14px;
+        padding: 13px 14px;
       }
 
       .number {
@@ -424,10 +410,9 @@
       </h1>
 
       <p class="intro">
-        แบบสอบถามนี้จัดทำขึ้นเพื่อศึกษาข้อมูลเกี่ยวกับ
-        การรับรู้ การบริโภค การผลิต การจำหน่าย
-        และแนวโน้มตลาดของ “ผำ”
-        กรุณาเลือกกลุ่มที่ตรงกับท่านมากที่สุด
+        แบบสอบถามงานวิจัยเกี่ยวกับการรับรู้ การบริโภค การผลิต
+        การจำหน่าย และแนวโน้มตลาดของ “ผำ”
+        กรุณาเลือกกลุ่มของท่านเพื่อเริ่มตอบแบบสอบถาม
       </p>
 
     </header>
@@ -440,9 +425,8 @@
       </div>
 
       <div class="info-text">
-        <strong>เลือกเพียง 1 กลุ่ม</strong>
-        ที่ตรงกับสถานะของท่านมากที่สุด
-        จากนั้นระบบจะนำท่านไปยังแบบสอบถามที่เหมาะสมโดยอัตโนมัติ
+        <strong>เลือก 1 กลุ่ม</strong> ที่ตรงกับท่านมากที่สุด
+        แล้วกดเพื่อเข้าสู่แบบสอบถาม
       </div>
 
     </div>
@@ -475,14 +459,8 @@
 
           <div class="card-content">
 
-            <div class="card-top">
-              <div class="card-title">
+            <div class="card-title">
                 นักศึกษามหาวิทยาลัยแม่โจ้
-              </div>
-
-              <span class="badge">
-                นักศึกษา
-              </span>
             </div>
 
             <div class="card-subtitle">
@@ -510,14 +488,8 @@
 
           <div class="card-content">
 
-            <div class="card-top">
-              <div class="card-title">
+            <div class="card-title">
                 Foreign Tourists
-              </div>
-
-              <span class="badge">
-                English
-              </span>
             </div>
 
             <div class="card-subtitle">
@@ -536,7 +508,7 @@
         <!-- 3 -->
         <a
           class="card restaurant"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSd8Hq1Qsx5WAlTzhR1wHM-6EfNGreXDm4kt_v3qwdP9EwPVkQ/viewform"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeeuTTnpQAWJ7J9IU_B3vZCgguW6UuwcsjADD2V4eg1vWqA9g/viewform?usp=header"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -544,35 +516,19 @@
           <div class="number">3</div>
 
           <div class="card-content">
-
-            <div class="card-top">
-              <div class="card-title">
-                ร้านอาหาร / โรงแรม
-              </div>
-
-              <span class="badge">
-                B2B
-              </span>
-            </div>
-
-            <div class="card-subtitle">
-              สำหรับเจ้าของกิจการ ผู้จัดการ เชฟ
-              หรือผู้เกี่ยวข้องกับธุรกิจร้านอาหารและโรงแรม
-            </div>
-
+            <div class="card-title">ร้านอาหาร</div>
+            <div class="card-subtitle">สำหรับเจ้าของกิจการ ผู้จัดการ เชฟ หรือผู้เกี่ยวข้องกับธุรกิจร้านอาหาร</div>
           </div>
 
-          <div class="arrow">
-            ›
-          </div>
+          <div class="arrow">›</div>
 
         </a>
 
 
         <!-- 4 -->
         <a
-          class="card consumer"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfKz-Vjxa_jMpXTF9-hwvswKJDtVY2dyKMiyOvbGi8hnq45wQ/viewform"
+          class="card hotel"
+          href="https://docs.google.com/forms/d/e/1FAIpQLScNLhdEtwpmyJWv65uIyzBn6Uu2nQzE4hSCmsmI-VzmkJnv-Q/viewform?usp=header"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -580,15 +536,29 @@
           <div class="number">4</div>
 
           <div class="card-content">
+            <div class="card-title">โรงแรม</div>
+            <div class="card-subtitle">สำหรับเจ้าของกิจการ ผู้จัดการ เชฟ หรือผู้เกี่ยวข้องกับธุรกิจโรงแรม</div>
+          </div>
 
-            <div class="card-top">
-              <div class="card-title">
+          <div class="arrow">›</div>
+
+        </a>
+
+
+        <!-- 5 -->
+        <a
+          class="card consumer"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfKz-Vjxa_jMpXTF9-hwvswKJDtVY2dyKMiyOvbGi8hnq45wQ/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="number">5</div>
+
+          <div class="card-content">
+
+            <div class="card-title">
                 ผู้บริโภคทั่วไป
-              </div>
-
-              <span class="badge">
-                เชียงใหม่
-              </span>
             </div>
 
             <div class="card-subtitle">
@@ -604,7 +574,7 @@
         </a>
 
 
-        <!-- 5 -->
+        <!-- 6 -->
         <a
           class="card seller"
           href="https://forms.gle/LnBzEUSd5xVFSfaN7"
@@ -612,18 +582,12 @@
           rel="noopener noreferrer"
         >
 
-          <div class="number">5</div>
+          <div class="number">6</div>
 
           <div class="card-content">
 
-            <div class="card-top">
-              <div class="card-title">
+            <div class="card-title">
                 ผู้จำหน่ายผำ
-              </div>
-
-              <span class="badge">
-                การตลาด
-              </span>
             </div>
 
             <div class="card-subtitle">
@@ -640,7 +604,7 @@
         </a>
 
 
-        <!-- 6 -->
+        <!-- 7 -->
         <a
           class="card processor"
           href="https://docs.google.com/forms/d/e/1FAIpQLSdil7ki1WruEsC4bGMiP2wWcrAaff445y6hA3ZRk03a8txypw/viewform"
@@ -648,18 +612,12 @@
           rel="noopener noreferrer"
         >
 
-          <div class="number">6</div>
+          <div class="number">7</div>
 
           <div class="card-content">
 
-            <div class="card-top">
-              <div class="card-title">
+            <div class="card-title">
                 ผู้แปรรูปผลิตภัณฑ์
-              </div>
-
-              <span class="badge">
-                Processing
-              </span>
             </div>
 
             <div class="card-subtitle">
@@ -676,7 +634,7 @@
         </a>
 
 
-        <!-- 7 -->
+        <!-- 8 -->
         <a
           class="card producer"
           href="https://forms.gle/PFNTPbmk9x25xpGt5"
@@ -684,18 +642,12 @@
           rel="noopener noreferrer"
         >
 
-          <div class="number">7</div>
+          <div class="number">8</div>
 
           <div class="card-content">
 
-            <div class="card-top">
-              <div class="card-title">
+            <div class="card-title">
                 ผู้ผลิต / เกษตรกรผู้เพาะเลี้ยงผำ
-              </div>
-
-              <span class="badge">
-                Production
-              </span>
             </div>
 
             <div class="card-subtitle">
